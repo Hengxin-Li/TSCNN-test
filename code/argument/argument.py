@@ -46,7 +46,7 @@ parser.add_argument('--data_pack', type=str, default='packet/packet',  # train/t
                     help='make binary data')
 
 # Evaluation specifications
-parser.add_argument('--s_eval_dataset', default='mcm.Mcm+kodak.Kodak',
+parser.add_argument('--s_eval_dataset', default='mcm.Mcm+kodak.Kodak+Urban100.Urban100',
                     help='evaluation dataset')
 parser.add_argument('--b_test_only', type=bool, default=True,
                     help='set this option to test the model')
