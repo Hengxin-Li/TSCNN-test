@@ -78,10 +78,10 @@ Quantitative comparison among different models on five datasets (Average CPSNR (
 
 ### Visual Results
 
-![Visual_Result](/Figs/image92_Urban100_x2.png)
+![Visual_Result](/Figs/image92_Urban100_x2.bmp)
 Results of img92 from Urban100 (×2). From left to right and top to bottom: DJDD + RCAN, CDMCNN + RCAN, 3-Stage + RCAN, TENet, RDSEN, TSCNN-L, TSCNN-H, Original image.
 
-![Visual_Result](/Figs/image60_Urban100_x3.png)
+![Visual_Result](/Figs/image60_Urban100_x3.bmp)
 Results of img60 from Urban100 (×3). From left to right and top to bottom: DJDD + RCAN, CDMCNN + RCAN, 3-Stage + RCAN, TENet, RDSEN, TSCNN-L, TSCNN-H, Original image.
 
 ## Citation
