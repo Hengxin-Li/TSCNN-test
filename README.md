@@ -31,7 +31,7 @@ The overall structure of the proposed TSCNN.
 
 Training data [DIV2K (800 training + 100 validtion images)]
 
-Benchmark data [(McM, Kodak)]
+Benchmark data [(McM, Kodak, BSD100, Urban100, Manga109)]
 
 ## Train
 
@@ -39,7 +39,7 @@ The source code for training our TSCNN will be available after the publication o
 
 ## Test
 
-1. We provide six pre-trained models in the `pretrained_models/`.
+1. We provide six pre-trained models in the `./code/pretrained_models/`.
 
 2. We provide dataloader for McM and Kodak datasets, therefore you can evaluate the model on these datasets.
 
@@ -48,26 +48,27 @@ The source code for training our TSCNN will be available after the publication o
     ```bash
     # Scale 2,3,4
     #-------------TSCNN_L_x2 
-    python main.py --s_model TSCNN.RDSRN  --RDNconfig A --n_patch_size 96   --dir_dataset DATA_testx2 --pre_train TSCNN_Lx2.pth --b_test_only --s_eval_dataset mcm.Mcm+kodak.Kodak
+    python main.py --s_model TSCNN.RDSRN  --RDNconfig A --n_patch_size 96   --dir_dataset DATA_testx2 --pre_train TSCNN_Lx2.pth --b_test_only True --s_eval_dataset mcm.Mcm+kodak.Kodak
     #-------------TSCNN_L_x3 
-    python main.py --s_model TSCNN.RDSRN  --RDNconfig A --n_patch_size 144  --dir_dataset DATA_testx3 --pre_train TSCNN_Lx3.pth --b_test_only --s_eval_dataset mcm.Mcm+kodak.Kodak
+    python main.py --s_model TSCNN.RDSRN  --RDNconfig A --n_patch_size 144  --dir_dataset DATA_testx3 --pre_train TSCNN_Lx3.pth --b_test_only True --s_eval_dataset mcm.Mcm+kodak.Kodak
     #-------------TSCNN_L_x4 
-    python main.py --s_model TSCNN.RDSRN  --RDNconfig A --n_patch_size 192  --dir_dataset DATA_testx4 --pre_train TSCNN_Lx4.pth --b_test_only --s_eval_dataset mcm.Mcm+kodak.Kodak
+    python main.py --s_model TSCNN.RDSRN  --RDNconfig A --n_patch_size 192  --dir_dataset DATA_testx4 --pre_train TSCNN_Lx4.pth --b_test_only True --s_eval_dataset mcm.Mcm+kodak.Kodak
     #-------------TSCNN_H_x2 
-    python main.py --s_model TSCNN.RDSRN  --RDNconfig B --n_patch_size 96   --dir_dataset DATA_testx2 --pre_train TSCNN_Hx2.pth --b_test_only --s_eval_dataset mcm.Mcm+kodak.Kodak
+    python main.py --s_model TSCNN.RDSRN  --RDNconfig B --n_patch_size 96   --dir_dataset DATA_testx2 --pre_train TSCNN_Hx2.pth --b_test_only True --s_eval_dataset mcm.Mcm+kodak.Kodak
     #-------------TSCNN_H_x3
-    python main.py --s_model TSCNN.RDSRN  --RDNconfig B --n_patch_size 144  --dir_dataset DATA_testx3 --pre_train TSCNN_Hx3.pth --b_test_only --s_eval_dataset mcm.Mcm+kodak.Kodak
+    python main.py --s_model TSCNN.RDSRN  --RDNconfig B --n_patch_size 144  --dir_dataset DATA_testx3 --pre_train TSCNN_Hx3.pth --b_test_only True --s_eval_dataset mcm.Mcm+kodak.Kodak
     #-------------TSCNN_H_x4
-    python main.py --s_model TSCNN.RDSRN  --RDNconfig B --n_patch_size 192  --dir_dataset DATA_testx4 --pre_train TSCNN_Hx4.pth --b_test_only --s_eval_dataset mcm.Mcm+kodak.Kodak
+    python main.py --s_model TSCNN.RDSRN  --RDNconfig B --n_patch_size 192  --dir_dataset DATA_testx4 --pre_train TSCNN_Hx4.pth --b_test_only True --s_eval_dataset mcm.Mcm+kodak.Kodak
 
     ```
 
 
 ## Note
 ### Prepare beachmark data
-* To improve the speed of reading pictures, the data is pickled into a binary file(.bin). The pickle data contains mosaicked LR images(data), HR(label), demosaicked LR image by MLRI(x_dem).
-* To generate the mosaicked LR images, we first use bicubic interpolation on the original images to obtain the LR images and then apply Bayer sampling on the LR images.
+* To improve the speed of reading pictures, the data is pickled into a binary file(.bin). 
+* To generate the mosaicked LR images, we first downsample the original images to obtain the LR images and then apply Bayer sampling on the LR images.
 * The mosaicked LR image is also demosaicked in parallel by MLRI.
+
 ### Evaluate the results
 * If you want to save the output images for each dataset, you need to add `--b_save_results True` to test commands.
 
