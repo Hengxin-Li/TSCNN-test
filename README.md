@@ -29,7 +29,7 @@ The overall structure of the proposed TSCNN.
 
 ## Data
 
-Training data [DIV2K (800 training + 100 validtion images)]
+Training data [DIV2K (800 training images)]
 
 Benchmark data [(McM, Kodak, BSD100, Urban100, Manga109)]
 
